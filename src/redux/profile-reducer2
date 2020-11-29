@@ -1,7 +1,0 @@
-const updateNewPostText = 'UPDATE-NEW-POST-TEXT';
-
-export const updateNewPostTextActionCreator = (textPost) => {
-    return {type: updateNewPostText, newText: textPost,}
-}
-
-export default updateNewPostTextActionCreator;

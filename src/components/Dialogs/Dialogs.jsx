@@ -2,8 +2,8 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import addMessageActionCreator from "../../redux/dialogs-reducer";
-import updateNewMessageTextActionCreator from "../../redux/dialogs-reducer2";
+import addMessageActionCreator, {updateNewMessageTextActionCreator} from "../../redux/dialogs-reducer.jsx";
+
 
 
 

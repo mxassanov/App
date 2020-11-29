@@ -1,4 +1,5 @@
 const addMessage = 'ADD-MESSAGE';
+const updateNewMessageText = 'UPDATE-NEW-MESSAGE-TEXT';
 
 export const dialogsReducer = (state, action) => {
 
@@ -19,5 +20,10 @@ export const dialogsReducer = (state, action) => {
     }
 }
 const addMessageActionCreator = () => ( {type: addMessage} )
+
+export const updateNewMessageTextActionCreator = (textMessage) => {
+    return {type: updateNewMessageText, newMessage: textMessage,}
+}
+
 
 export default addMessageActionCreator;

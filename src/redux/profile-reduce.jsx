@@ -22,8 +22,12 @@ export const profileReducer = (state, action) => {
     }
 }
 const addPostActionCreator = () => {
-    return {type: addPost,}
+    return {type: addPost}
 };
+
+export const updateNewPostTextActionCreator = (textPost) => {
+    return {type: updateNewPostText, newText: textPost,}
+}
 
 
 export default addPostActionCreator;
