@@ -1,0 +1,23 @@
+const addMessage = 'ADD-MESSAGE';
+
+export const dialogsReducer = (state, action) => {
+
+    switch (action.type) {
+        case addMessage:
+            let newMessage = {
+                id: 5,
+                message: state.newMessageText,
+            }
+            state.messages.push(newMessage);
+            state.messages = '';
+            break;
+        case updateNewMessageText:
+            state.newMessageText = action.newMessage;
+            break;
+        default:
+            return state;
+    }
+}
+const addMessageActionCreator = () => ( {type: addMessage} )
+
+export default addMessageActionCreator;

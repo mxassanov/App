@@ -1,0 +1,7 @@
+const updateNewMessageText = 'UPDATE-NEW-MESSAGE-TEXT';
+
+export const updateNewMessageTextActionCreator = (textMessage) => {
+    return {type: updateNewMessageText, newMessage: textMessage,}
+}
+
+export default updateNewMessageTextActionCreator;
