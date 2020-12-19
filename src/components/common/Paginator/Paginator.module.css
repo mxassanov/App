@@ -1,0 +1,11 @@
+.pageNumber {
+    padding: 3px;
+    border:    1px solid cornflowerblue;
+}
+.paginator {
+    margin: 10px;
+}
+.pageNumber.selectedPage {
+    font-weight: bold;
+    border-color: black;
+}

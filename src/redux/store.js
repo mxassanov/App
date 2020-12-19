@@ -1,6 +1,6 @@
-import profileReducer from "./profile-reduce";
+import {profileReducer} from "./profile-reduce";
 import sidebarReducer from "./sidebar-reducer";
-import dialogsReducer from "./dialogs-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
 
 let store = {
     _state: {
@@ -81,4 +81,3 @@ let store = {
 }
 
 export default store;
-window.store = store;
