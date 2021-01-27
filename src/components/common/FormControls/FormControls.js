@@ -13,6 +13,7 @@ const FormControl = ({input, meta, child, ...props}) => {
             { hasError && <span>{meta.error}</span> }
         </div>
     )
+
 }
 
 const Textarea = (props) => {

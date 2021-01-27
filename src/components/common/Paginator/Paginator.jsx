@@ -33,4 +33,5 @@ let Paginator = (props) => {
     </div>
 }
 
+
 export default Paginator;
