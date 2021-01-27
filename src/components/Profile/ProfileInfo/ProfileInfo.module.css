@@ -8,3 +8,9 @@
     width: 95%;
     height: 60%;
 }
+.mainPhoto {
+    max-width: 180px;
+}
+.contact {
+    padding-left: 20px;
+}

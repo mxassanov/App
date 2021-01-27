@@ -12,7 +12,7 @@ const MyPosts = React.memo(props => {
     let onAddPost = (values) => {
         props.addPost(values.newPostText);
     }
-    let postsElements = props.posts.map(p => <Post message={p.message} like_counts={p.like_counts}/>)
+    let postsElements = props.posts.map(p => <Post key={p.id} message={p.message} like_counts={p.like_counts}/>)
 
     return (
         <div className={s.Myposts}>

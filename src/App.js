@@ -13,13 +13,22 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/preloader/preloader";
+import {Redirect, Switch} from "react-router";
 
 const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 
 class App extends React.Component {
+    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+
+    }
     componentDidMount() {
         this.props.initializeApp();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+        // обработчик всех ошибок
+    }
+    componentWillUnmount() {
+        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
     }
 
     render() {
@@ -31,6 +40,9 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <Navbar store={this.props.store}/>
                 <div className='app-wrapper-content'>
+                    <Switch>
+                    <Route exact path='/'
+                           render={() => <Redirect to={"/profile"}/>}/>
                     <Route path='/messages'
                            render={() => <DialogsContainer store={this.props.store}/>}/>
                     <Route path='/profile/:userId?'
@@ -47,6 +59,9 @@ class App extends React.Component {
                             <Settings/>
                         </React.Suspense>
                     }}/>
+                    <Route path='*'
+                           render={() => <div>404 NOT FOUND</div>}/>
+                    </Switch>
                 </div>
             </div>
         );
