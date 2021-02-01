@@ -19,58 +19,60 @@ const Settings = React.lazy(() => import('./components/Settings/Settings'));
 
 
 class App extends React.Component {
-    catchAllUnhandledErrors = (promiseRejectionEvent) => {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
 
-    }
-    componentDidMount() {
-        this.props.initializeApp();
-        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
-        // обработчик всех ошибок
-    }
-    componentWillUnmount() {
-        window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
-    }
+  }
 
-    render() {
-        if (!this.props.initialized) {
-            return <Preloader/>
-        }
-        return (
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <Navbar store={this.props.store}/>
-                <div className='app-wrapper-content'>
-                    <Switch>
-                    <Route exact path='/'
-                           render={() => <Redirect to={"/profile"}/>}/>
-                    <Route path='/messages'
-                           render={() => <DialogsContainer store={this.props.store}/>}/>
-                    <Route path='/profile/:userId?'
-                           render={() => <ProfileContainer store={this.props.store}/>}/>
-                    <Route path='/users'
-                           render={() => <UsersContainer store={this.props.store}/>}/>
-                    <Route path='/login'
-                           render={() => <LoginPage store={this.props.store}/>}/>
+  componentDidMount() {
+    this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+    // обработчик всех ошибок
+  }
 
-                    <Route path='/news' render={() => <News />}/>
-                    <Route path='/music' render={() => <Music />}/>
-                    <Route path='/settings' render={ () => {
-                        return <React.Suspense fallback={<Preloader />}>
-                            <Settings/>
-                        </React.Suspense>
-                    }}/>
-                    <Route path='*'
-                           render={() => <div>404 NOT FOUND</div>}/>
-                    </Switch>
-                </div>
-            </div>
-        );
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors)
+  }
+
+  render() {
+    if (!this.props.initialized) {
+      return <Preloader/>
     }
+    return (
+      <div className='app-wrapper'>
+        <HeaderContainer/>
+        <Navbar store={this.props.store}/>
+        <div className='app-wrapper-content'>
+          <Switch>
+            <Route exact path='/'
+                   render={() => <Redirect to={"/profile"}/>}/>
+            <Route path='/messages'
+                   render={() => <DialogsContainer/>}/>
+            <Route path='/profile/:userId?'
+                   render={() => <ProfileContainer/>}/>
+            <Route path='/users'
+                   render={() => <UsersContainer pageTitle={"Users"}/>}/>
+            <Route path='/login'
+                   render={() => <LoginPage/>}/>
+
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/music' render={() => <Music/>}/>
+            <Route path='/settings' render={() => {
+              return <React.Suspense fallback={<Preloader/>}>
+                <Settings/>
+              </React.Suspense>
+            }}/>
+            <Route path='*'
+                   render={() => <div>404 NOT FOUND</div>}/>
+          </Switch>
+        </div>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+  initialized: state.app.initialized
 })
 
 export default compose(withRouter,
-    connect(mapStateToProps, {initializeApp}))(App);
+  connect(mapStateToProps, {initializeApp}))(App);

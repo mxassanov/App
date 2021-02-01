@@ -42,7 +42,7 @@ const ProfileInfo = (props) => {
                                    setEditMode(true)
                                }}/>}
 
-            <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileStatusHooks currentStatus={props.status} updateStatus={props.updateStatus}/>
         </div>
     )
 }

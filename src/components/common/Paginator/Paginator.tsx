@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import s from "./Paginator.module.css";
 import cn from "classnames";
 
-let Paginator = (props) => {
+let Paginator = (props: any) => {
     let pagesCount = Math.ceil(props.totalItemsCount / props.pageSize);
-    let pages = [];
+    let pages: Array <number> = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
