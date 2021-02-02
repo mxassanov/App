@@ -1,4 +1,4 @@
-import {profileAPI, usersAPI} from "../api/api";
+import {profileAPI, ResultCodesEnum, usersAPI} from "../api/api";
 import {stopSubmit} from "redux-form";
 import {PhotosType, PostType, ProfileType} from "../types/types";
 import {ThunkAction} from "redux-thunk";
@@ -129,7 +129,8 @@ export const saveProfile = (profile: ProfileType): ThunkType =>
   const userId = getState().auth.userId;
   const response = await profileAPI.saveProfile(profile);
 
-  if (response.data.resultCode === 0) {
+  if (response.data.resultCode === ResultCodesEnum.Success) {
+    console.log(response.data)
     dispatch(getUserProfile(userId));
   } else {
     dispatch(stopSubmit("edit-profile", {_error: response.data.messages[0]}));

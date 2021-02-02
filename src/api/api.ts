@@ -48,7 +48,7 @@ export const profileAPI = {
     return instance.put('profile/photo', formData)
   },
   saveProfile(profile: ProfileType) {
-    return instance.put<ProfileType>('profile', profile)
+    return instance.put('profile', profile)
   }
 
 }
