@@ -1,7 +1,7 @@
 import React from "react";
 import Textarea, {createField, Input} from "../../common/FormControls/FormControls";
 import {reduxForm} from "redux-form";
-import s from './ProfileInfo.module.css';
+import s from './ProfileInfo.module';
 import styles from "../../common/FormControls/FormControls.module.css";
 
 const ProfileDataForm = (props) => {

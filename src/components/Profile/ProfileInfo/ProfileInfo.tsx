@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import s from './ProfileInfo.module.css';
+import s from './ProfileInfo.module';
 import Preloader from "../../common/preloader/preloader";
 import userPhoto from "../../../asserts/images/user.png";
 import ProfileStatusHooks from "./ProfileStatusHooks";

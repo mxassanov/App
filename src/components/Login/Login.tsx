@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
-import {Input} from "../common/FormControls/FormControls";
+import Textarea, {createField, Input} from "../common/FormControls/FormControls";
 import {requiredField} from "../../utils/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
@@ -12,11 +12,13 @@ type LoginFormOwnProps = {
   captchaUrl: string | null
 }
 
-const LoginForm: React.FC< InjectedFormProps<LoginFormValuesData, LoginFormOwnProps> & LoginFormOwnProps > =
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesData, LoginFormOwnProps> & LoginFormOwnProps> =
   ({handleSubmit, error, captchaUrl}) => {
     return (
       <form onSubmit={handleSubmit}>
         <div>
+          {createField<NewMessageFormValuesKeysType>("Enter your message", "newMessageBody",
+            [requiredField, maxLength50], Textarea)}
           <Field placeholder={'Email'} name={'email'} component={Input} validate={requiredField}/>
         </div>
         <div>
@@ -62,7 +64,6 @@ type LoginFormValuesData = {
   rememberMe: boolean
   password: string
   email: string
-
 }
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> =
